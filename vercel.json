@@ -8,6 +8,12 @@
   ],
   "routes": [
     {
+      "src": "/(.*\\.(css|js|html))",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }

@@ -26,6 +26,13 @@ async function sendMessage() {
   sendBtn.disabled = true;
 
   try {
+    // 检查是否为特殊问题
+    const specialResponse = handleSpecialQuestions(userMessage);
+    if (specialResponse) {
+      addMessage('bot', specialResponse);
+      return;
+    }
+
     // 添加加载状态
     const loadingMessage = document.createElement('div');
     loadingMessage.classList.add('message', 'bot-message');
@@ -73,6 +80,17 @@ messageInput.addEventListener('keydown', (e) => {
   }
 });
 
+// 自定义响应处理
+function handleSpecialQuestions(message) {
+  const lowerMessage = message.toLowerCase();
+  if (lowerMessage.includes('你是谁') || 
+      lowerMessage.includes('你是什么') ||
+      lowerMessage.includes('你的身份')) {
+    return '我是秋林设计的专属AI助手，专门为您提供智能对话服务。';
+  }
+  return null;
+}
+
 // 初始化欢迎消息
-addMessage('bot', '您好！我是秋林机器人，请问有什么可以帮您？');
-document.querySelector('.chat-header h2').textContent = '秋林机器人';
+addMessage('bot', '您好！我是秋林设计的专属AI助手，请问有什么可以帮您？');
+document.querySelector('.chat-header h2').textContent = '秋林专属AI';

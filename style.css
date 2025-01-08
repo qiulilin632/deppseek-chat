@@ -1,9 +1,13 @@
 :root {
   --primary-color: #2196F3;
-  --bg-color: #f7f7f7;
+  --bg-color: linear-gradient(135deg, #f7f7f7 0%, #e6f4ff 100%);
   --text-color: #333;
   --user-bubble: #e3f2fd;
   --bot-bubble: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --transition: all 0.2s ease;
 }
 
 body {
@@ -20,15 +24,31 @@ body {
   display: flex;
   flex-direction: column;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-lg);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition);
 }
 
 .chat-header {
   background-color: var(--primary-color);
   color: white;
-  padding: 15px;
+  padding: 20px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.chat-header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 2px;
 }
 
 .chat-header h2 {
@@ -91,10 +111,38 @@ body {
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
 #send-btn:hover {
-  background-color: #0d8a6d;
+  background-color: #1976D2;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+#send-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+#send-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+#send-btn:active::after {
+  width: 200px;
+  height: 200px;
 }
 
 @media (max-width: 768px) {

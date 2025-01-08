@@ -74,5 +74,5 @@ messageInput.addEventListener('keydown', (e) => {
 });
 
 // 初始化欢迎消息
-addMessage('bot', '您好！我是华晟机器人，请问有什么可以帮您？');
-document.querySelector('.chat-header h2').textContent = '华晟机器人';
+addMessage('bot', '您好！我是秋林机器人，请问有什么可以帮您？');
+document.querySelector('.chat-header h2').textContent = '秋林机器人';

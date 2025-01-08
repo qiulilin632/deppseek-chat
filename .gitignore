@@ -1,0 +1,19 @@
+# 忽略操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 忽略编辑器/IDE生成的文件
+.vscode/
+.idea/
+
+# 忽略Node.js模块
+node_modules/
+
+# 忽略Python编译文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 忽略日志文件
+*.log
